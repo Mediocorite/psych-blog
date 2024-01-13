@@ -21,14 +21,15 @@ export default function ThemeSwitcher() {
       <span
         className={`${darkTheme ? "translate-x-6" : "translate-x-1"}
           inline-block h-4 w-4 transform rounded-full
-          bg-white p-0.5 transition-transform`}
+          bg-white transition-transform`}
+      />
+
+      <div
+        className={`${darkTheme ? "translate-x-0.5" : "translate-x-5"}
+          absolute z-10 text-sm`}
       >
-        {darkTheme ? (
-          <Image src="/moon.png" alt="moon" width={15} height={15} />
-        ) : (
-          <Image src="/sun.png" alt="sun" width={15} height={15} />
-        )}
-      </span>
+        {darkTheme ? "☀️" : "🌙"}
+      </div>
     </Switch>
   );
 }
