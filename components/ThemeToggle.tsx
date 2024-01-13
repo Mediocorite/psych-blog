@@ -1,34 +1,34 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { ThemeContext } from "@/context/ThemeContext";
 import { Switch } from "@headlessui/react";
-import Image from "next/image";
 
 export default function ThemeSwitcher() {
-  const [darkTheme, setDarkTheme] = useState(false);
+  const { isDark, toggle } = useContext(ThemeContext);
 
   useEffect(() => {
-    document.body.classList.toggle("dark", darkTheme);
-  }, [darkTheme]);
+    document.body.classList.toggle("dark", isDark);
+  }, [isDark]);
 
   return (
     <Switch
-      checked={darkTheme}
-      onChange={setDarkTheme}
-      className={`${darkTheme ? "bg-gray-700" : "bg-gray-200"}
+      checked={isDark}
+      onChange={toggle}
+      className={`${isDark ? "bg-gray-700" : "bg-gray-200"}
         relative inline-flex h-6 w-11 items-center rounded-full
         transition-colors focus:outline-none`}
     >
       <span
-        className={`${darkTheme ? "translate-x-6" : "translate-x-1"}
+        className={`${isDark ? "translate-x-6" : "translate-x-1"}
           inline-block h-4 w-4 transform rounded-full
           bg-white transition-transform`}
       />
 
       <div
-        className={`${darkTheme ? "translate-x-0.5" : "translate-x-5"}
+        className={`${isDark ? "translate-x-0.5" : "translate-x-5"}
           absolute z-10 text-sm`}
       >
-        {darkTheme ? "☀️" : "🌙"}
+        {isDark ? "☀️" : "🌙"}
       </div>
     </Switch>
   );
