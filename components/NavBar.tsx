@@ -12,7 +12,7 @@ export default function Navbar() {
         Jung and the Restless
       </div>
       <div className="flex flex-1 items-center gap-5 text-lg sm:justify-end xl:text-lg">
-        <ThemeToggle />
+        <ThemeToggle initialTheme="light" />
         <Link href="/" className="hidden sm:flex">
           Homepage
         </Link>
@@ -27,7 +27,7 @@ export default function Navbar() {
           <Image src="/facebook.png" alt="facebook" width={24} height={24} />
           <Image src="/instagram.png" alt="instagram" width={24} height={24} />
         </div>
-        <Hamburger />
+        <Hamburger initialTheme="light" />
       </div>
     </div>
   );

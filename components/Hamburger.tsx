@@ -1,11 +1,10 @@
 "use client";
-import { ThemeContext } from "@/context/ThemeContext";
 import React, { useContext, useState } from "react";
+import { getServerSideProps } from "./ThemeToggle";
+import type { GetServerSidePropsContext } from "next";
 
-export default function Hamburger() {
+export default function Hamburger({ initialTheme }: { initialTheme: string }) {
   const [open, setOpen] = useState(false);
-  const { isDark } = useContext(ThemeContext);
-  console.log(isDark);
 
   return (
     <div>
@@ -16,17 +15,17 @@ export default function Hamburger() {
         onClick={() => setOpen(!open)}
       >
         <div
-          className={`${isDark ? "bg-gray-200" : "bg-gray-700"}
+          className={`${initialTheme === "dark" ? "bg-gray-200" : "bg-gray-700"}
         relative inline-flex h-0.5 w-full items-center rounded-full
         transition-colors focus:outline-none`}
         ></div>
         <div
-          className={`${isDark ? "bg-gray-200" : "bg-gray-700"}
+          className={`${initialTheme === "dark" ? "bg-gray-200" : "bg-gray-700"}
         relative  inline-flex h-0.5 w-full items-center rounded-full
         transition-colors focus:outline-none`}
         ></div>
         <div
-          className={`${isDark ? "bg-gray-200" : "bg-gray-700"}
+          className={`${initialTheme === "dark" ? "bg-gray-200" : "bg-gray-700"}
         relative  inline-flex h-0.5 w-full items-center rounded-full
         transition-colors focus:outline-none`}
         ></div>
