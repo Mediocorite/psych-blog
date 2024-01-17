@@ -17,7 +17,7 @@ export default function Navbar() {
       <div className="flex flex-1 text-center text-lg font-bold md:text-2xl lg:text-left xl:text-3xl">
         <Link href={"/"}>Jung and the Restless</Link>
       </div>
-      <div className="hidden flex-1 items-center gap-5 text-lg sm:justify-end md:flex xl:text-lg">
+      <div className="hidden flex-1 justify-end gap-5 text-lg md:flex xl:text-lg">
         <ThemeToggle initialTheme="light" />
         {links.map((link) => (
           <Link key={link.id} href={link.url}>
@@ -25,7 +25,7 @@ export default function Navbar() {
           </Link>
         ))}
         <AuthLinks />
-        <div className=" hidden flex-1 gap-3 lg:flex">
+        <div className=" hidden gap-3 lg:flex">
           <Image src="/facebook.png" alt="facebook" width={24} height={24} />
           <Image src="/instagram.png" alt="instagram" width={24} height={24} />
         </div>
