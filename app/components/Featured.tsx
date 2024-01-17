@@ -8,6 +8,10 @@ const featuredContent = {
   },
 };
 
+function FeaturedCard({}) {
+  return <div>FeaturedCard</div>;
+}
+
 export default function Featured() {
   return (
     <div className="mt-30">
