@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import AuthLinks from "./AuthLinks";
-import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
+import { Drawer, DrawerContent, DrawerTrigger } from "./shadcn/ui/drawer";
 
 const links = [
   { id: 1, name: "About", url: "/about" },
