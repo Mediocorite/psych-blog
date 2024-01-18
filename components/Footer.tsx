@@ -7,7 +7,7 @@ function Footer() {
     <div className="mt-12 flex flex-col items-center justify-between gap-12 p-0 text-[var(--softTextColor)] lg:flex-row lg:gap-0">
       <div className="flex flex-1 flex-col gap-3.5">
         <div className="flex items-center gap-2.5">
-          <Image src="/logo.png" alt="lama blog" width={50} height={50} />
+          {/* <Image src="/logo.png" alt="lama blog" width={50} height={50} /> */}
           <h1 className="text-2xl">Lamablog</h1>
         </div>
         <p className="font-light">
@@ -16,10 +16,6 @@ function Footer() {
           porro sequi, totam minima consequuntur, aspernatur deleniti vero
           repellendus dorales.
         </p>
-        <div className="mt-2.5 flex gap-2.5">
-          <Image src="/facebook.png" alt="" width={18} height={18} />
-          <Image src="/instagram.png" alt="" width={18} height={18} />
-        </div>
       </div>
       <div className="gap-25 flex flex-1 justify-end md:gap-6 lg:gap-12">
         <div className="flex flex-col gap-2.5 font-light">

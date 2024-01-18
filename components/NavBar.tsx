@@ -26,44 +26,53 @@ export default function Navbar() {
         ))}
         <AuthLinks />
         <div className=" hidden gap-3 lg:flex">
-          <Image src="/facebook.png" alt="facebook" width={24} height={24} />
-          <Image src="/instagram.png" alt="instagram" width={24} height={24} />
-        </div>
-      </div>
-      <Drawer>
-        <DrawerTrigger className="flex md:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-menu-2"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 6l16 0" />
-            <path d="M4 12l16 0" />
-            <path d="M4 18l16 0" />
-          </svg>
-        </DrawerTrigger>
-        <DrawerContent>
-          <div className="flex flex-col items-center justify-center">
-            {links.map((link) => (
-              <Link
-                key={link.id}
-                href={link.url}
-                className="m-4 p-4 text-center text-2xl"
-              >
-                {link.name}
-              </Link>
-            ))}
+          <div style={{ width: "24px", height: "24px", position: "relative" }}>
+            <Image src="/facebook.png" alt="facebook" width={24} height={24} />
           </div>
-        </DrawerContent>
-      </Drawer>
+          <div style={{ width: "24px", height: "24px", position: "relative" }}>
+            <Image
+              src="/instagram.png"
+              alt="instagram"
+              width={24}
+              height={24}
+            />
+          </div>
+        </div>
+        <Drawer>
+          <DrawerTrigger className="flex md:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-menu-2"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M4 6l16 0" />
+              <path d="M4 12l16 0" />
+              <path d="M4 18l16 0" />
+            </svg>
+          </DrawerTrigger>
+          <DrawerContent>
+            <div className="flex flex-col items-center justify-center">
+              {links.map((link) => (
+                <Link
+                  key={link.id}
+                  href={link.url}
+                  className="m-4 p-4 text-center text-2xl"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </DrawerContent>
+        </Drawer>
+      </div>
     </div>
   );
 }
