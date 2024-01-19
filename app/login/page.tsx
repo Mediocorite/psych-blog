@@ -1,70 +1,88 @@
 "use client";
-import React, { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-export default function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+export default function SignIn() {
+  const router = useRouter();
 
-  const onSubmit = () => {
-    console.log(
-      "This is username: " + username + " This is password: " + password,
-    );
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = new FormData(event.target as HTMLFormElement);
+
+    const email = form.get("email");
+    const password = form.get("password");
+
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+
+    if (result && !result.error) {
+      router.push("/");
+    }
+
+    // TODO: handle error
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
-        <div className="w-full rounded-lg bg-white shadow dark:border dark:border-gray-700 dark:bg-gray-800 sm:max-w-md md:mt-0 xl:p-0">
-          <div className="space-y-4 p-6 sm:p-8 md:space-y-6">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">
-              Sign in to your account
-            </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Username / Email
-                </label>
+    <div>
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="mt-10 border-black p-10 shadow-lg sm:mx-auto sm:w-full sm:max-w-sm">
+          <form onSubmit={onSubmit} className="space-y-6">
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium leading-6"
+              >
+                Email address
+              </label>
+              <div className="mt-2">
                 <input
-                  type="email"
-                  name="email"
                   id="email"
-                  className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
-                  placeholder="name@company.com"
-                  required={true}
-                  onChange={(e) => setUsername(e.target.value)}
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="block w-full rounded-md border-0 bg-white/5 p-4 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                 />
               </div>
-              <div>
+            </div>
+
+            <div>
+              <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                  className="white block text-sm font-medium leading-6"
                 >
                   Password
                 </label>
+              </div>
+              <div className="mt-2">
                 <input
-                  type="password"
-                  name="password"
                   id="password"
-                  placeholder="••••••••"
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-blue-600 focus:ring-blue-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500 sm:text-sm"
-                  required={true}
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="block w-full rounded-md border-0 bg-white/5 p-4 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                 />
               </div>
+            </div>
 
+            <div>
               <button
                 type="submit"
-                className="w-full rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 disabled:opacity-40"
               >
                 Sign in
               </button>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
