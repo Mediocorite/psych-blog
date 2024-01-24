@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import AuthLinks from "./AuthLinks";
-import { Drawer, DrawerContent, DrawerTrigger } from "./shadcn/ui/drawer";
+import { Drawer, DrawerContent, DrawerTrigger } from "../shadcn/ui/drawer";
 
 const links = [
   { id: 1, name: "About", url: "/about" },
@@ -11,7 +11,7 @@ const links = [
   { id: 3, name: "Resume", url: "/resume" },
 ];
 
-export default function Navbar() {
+export default function Header() {
   return (
     <div className="flex h-28 items-center justify-between">
       <div className="flex flex-1 text-center text-lg font-bold md:text-2xl lg:text-left xl:text-3xl">
@@ -26,23 +26,29 @@ export default function Navbar() {
         ))}
         <AuthLinks />
         <div className=" hidden gap-3 lg:flex">
-          <div style={{ width: "24px", height: "24px", position: "relative" }}>
+          <Link
+            href={"https://www.linkedin.com/in/dinaish-mistry-16b496224/"}
+            style={{ width: "24px", height: "24px", position: "relative" }}
+          >
             <Image
               priority={true}
-              src="/facebook.png"
-              alt="facebook"
+              src="/linkedin.png"
+              alt="link"
               width={24}
               height={24}
             />
-          </div>
-          <div style={{ width: "24px", height: "24px", position: "relative" }}>
+          </Link>
+          <Link
+            href={"https://www.instagram.com/_dinaish_mistry_/?hl=en"}
+            style={{ width: "24px", height: "24px", position: "relative" }}
+          >
             <Image
               src="/instagram.png"
               alt="instagram"
               width={24}
               height={24}
             />
-          </div>
+          </Link>
         </div>
         <div className="flex md:hidden">
           hello

@@ -8,34 +8,36 @@ function Footer() {
       <div className="flex flex-1 flex-col gap-3.5">
         <div className="flex items-center gap-2.5">
           {/* <Image src="/logo.png" alt="lama blog" width={50} height={50} /> */}
-          <h1 className="text-2xl">Lamablog</h1>
+          <h1 className="text-2xl">Jung and the Restless</h1>
         </div>
         <p className="font-light">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim
-          necessitatibus similique aspernatur obcaecati veritatis. Aperiam cum
-          porro sequi, totam minima consequuntur, aspernatur deleniti vero
-          repellendus dorales.
+          &copy; 2024 Dinaish Mistry. All rights reserved. Made in collaboration
+          with Anzar Ahmad Malik. Want to build something? Let me know{" "}
+          {`{Insert portfolio link here}`}
         </p>
       </div>
       <div className="gap-25 flex flex-1 justify-end md:gap-6 lg:gap-12">
         <div className="flex flex-col gap-2.5 font-light">
           <span className="font-bold">Links</span>
           <Link href="/">Homepage</Link>
-          <Link href="/">Blog</Link>
-          <Link href="/">About</Link>
-          <Link href="/">Contact</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
         </div>
-        <div className="flex flex-col gap-2.5 font-light">
+        {/* <div className="flex flex-col gap-2.5 font-light">
           <span className="font-bold">Tags</span>
           <Link href="/">Style</Link>
           <Link href="/">Fashion</Link>
           <Link href="/">Coding</Link>
           <Link href="/">Travel</Link>
-        </div>
+        </div> */}
         <div className="flex flex-col gap-2.5 font-light">
           <span className="font-bold">Social</span>
-          <Link href="/">Facebook</Link>
-          <Link href="/">Instagram</Link>
+          <Link href="https://www.linkedin.com/in/dinaish-mistry-16b496224/">
+            LinkedIn
+          </Link>
+          <Link href="https://www.instagram.com/_dinaish_mistry_/?hl=en">
+            Instagram
+          </Link>
         </div>
       </div>
     </div>

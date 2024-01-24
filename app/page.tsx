@@ -6,11 +6,11 @@ import Menu from "@/app/components/Menu";
 export default function Home() {
   return (
     <div>
-      <Featured />
-      <CategoryList />
+      {/* <Featured /> */}
+      {/* <CategoryList /> */}
       <div className="">
-        <CardList />
-        <Menu />
+        {/* <CardList /> */}
+        {/* <Menu /> */}
       </div>
     </div>
   );
