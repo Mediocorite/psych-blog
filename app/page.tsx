@@ -9,6 +9,7 @@ export default function Home() {
       {/* <Featured /> */}
       {/* <CategoryList /> */}
       <div className="">
+        Hello
         {/* <CardList /> */}
         {/* <Menu /> */}
       </div>
