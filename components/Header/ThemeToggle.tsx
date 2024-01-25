@@ -41,20 +41,24 @@ export default function ThemeSwitcher({
       checked={theme === "dark"}
       onChange={toggleTheme}
       className={`${theme === "dark" ? "bg-gray-700" : "bg-gray-200"}
-        relative inline-flex h-6 w-11 items-center rounded-full
-        transition-colors focus:outline-none`}
+        relative inline-flex h-6 w-12 items-center rounded-full
+        text-center transition-colors focus:outline-none`}
     >
       <span
-        className={`${theme === "dark" ? "translate-x-6" : "translate-x-1"}
+        className={`${
+          theme === "dark"
+            ? "translate-x-7 bg-gray-300"
+            : "translate-x-1 bg-white"
+        }
           inline-block h-4 w-4 transform rounded-full
-          bg-white transition-transform`}
+           transition-transform`}
       />
 
       <div
-        className={`${theme === "dark" ? "translate-x-0.5" : "translate-x-5"}
-          absolute z-10 text-sm`}
+        className={`${theme === "dark" ? "translate-x-1" : "translate-x-7"}
+          absolute z-10 flex h-4 w-4 items-center justify-center text-sm`}
       >
-        {theme === "dark" ? "☀️" : "🌙"}
+        {theme === "dark" ? "☀️" : "🌕"}
       </div>
     </Switch>
   );

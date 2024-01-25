@@ -16,21 +16,21 @@ function Footer() {
           {`{Insert portfolio link here}`}
         </p>
       </div>
-      <div className="gap-25 flex flex-1 justify-end md:gap-6 lg:gap-12">
-        <div className="flex flex-col gap-2.5 font-light">
+      <div className="flex lg:justify-end">
+        <div className="m-6 flex flex-col gap-2.5 font-light">
           <span className="font-bold">Links</span>
           <Link href="/">Homepage</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
         </div>
-        {/* <div className="flex flex-col gap-2.5 font-light">
-          <span className="font-bold">Tags</span>
+        <div className="m-6 flex flex-col gap-2.5 font-light">
+          <span className="font-bold">Categories</span>
           <Link href="/">Style</Link>
           <Link href="/">Fashion</Link>
           <Link href="/">Coding</Link>
           <Link href="/">Travel</Link>
-        </div> */}
-        <div className="flex flex-col gap-2.5 font-light">
+        </div>
+        <div className="m-6 flex flex-col gap-2.5 font-light">
           <span className="font-bold">Social</span>
           <Link href="https://www.linkedin.com/in/dinaish-mistry-16b496224/">
             LinkedIn
