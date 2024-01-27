@@ -1,22 +1,32 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Markdown from "react-markdown";
 export default function Writer() {
-  // TODO: Install react-markdown.
+  const [markdownText, setMarkdownText] = useState(``);
   // TODO: Hookup text area to be converted into markdown.
-  const { data: session } = useSession();
-  const router = useRouter();
+  // Vconst { data: session } = useSession();
+  // const router = useRouter();
 
-  useEffect(() => {
-    if (!session) {
-      router.push("/");
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   if (!session) {
+  //     router.push("/");
+  //   }
+  // }, [session]);
+  // Have a simple markdown editor.
+  // Two components -> Editor window / Output windows
 
   return (
     <div>
-      <div className="">Writer</div>
+      <textarea
+        className="w-full placeholder:opacity-80"
+        placeholder="Feed me some Markdown 🍕"
+        value={markdownText}
+        onChange={(e) => setMarkdownText(e.target.value)}
+        autoFocus
+      ></textarea>
+      <Markdown>{markdownText}</Markdown>
     </div>
   );
 }

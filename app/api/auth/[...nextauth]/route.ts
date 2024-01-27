@@ -1,9 +1,9 @@
 import NextAuth from "next-auth";
-
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/middleware/firebase";
+
 const Options: NextAuthOptions = {
   // Configure one or more authentication providers
   pages: {
@@ -14,12 +14,10 @@ const Options: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "email", type: "text", placeholder: "jsmith" },
-        password: { label: "Password", type: "password" },
+        // username: { label: "email", type: "text", placeholder: "jsmith" },
+        // password: { label: "Password", type: "password" },
       },
       async authorize(credentials): Promise<any> {
-        console.log(`This is the creds: ` + JSON.stringify(credentials));
-
         return await signInWithEmailAndPassword(
           auth,
           (credentials as any).email || "",
@@ -42,4 +40,5 @@ const Options: NextAuthOptions = {
   ],
 };
 const handler = NextAuth(Options);
+console.log(JSON.stringify(handler));
 export { handler as GET, handler as POST };

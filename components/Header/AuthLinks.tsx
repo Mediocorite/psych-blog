@@ -1,10 +1,13 @@
 "use client";
+import React from "react";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import React, { useState } from "react";
+
 export default function AuthLinks() {
-  const { data: session } = useSession();
-  if (session)
+  const { status } = useSession();
+
+  if (status === "loading") return null;
+  if (status === "authenticated") {
     return (
       <>
         <Link href={"/writer"}>Writer</Link>
@@ -13,6 +16,7 @@ export default function AuthLinks() {
         </Link>
       </>
     );
+  }
 
   return null;
 }

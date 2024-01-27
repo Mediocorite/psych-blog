@@ -28,7 +28,7 @@ export default function Header() {
         <div className=" hidden gap-3 lg:flex">
           <Link
             href={"https://www.linkedin.com/in/dinaish-mistry-16b496224/"}
-            style={{ width: "24px", height: "24px", position: "relative" }}
+            style={{ width: "24px", height: "auto", position: "relative" }}
           >
             <Image
               priority={true}
@@ -40,7 +40,7 @@ export default function Header() {
           </Link>
           <Link
             href={"https://www.instagram.com/_dinaish_mistry_/?hl=en"}
-            style={{ width: "24px", height: "24px", position: "relative" }}
+            style={{ width: "24px", height: "auto", position: "relative" }}
           >
             <Image
               src="/instagram.png"

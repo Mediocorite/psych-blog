@@ -18,7 +18,7 @@ export default function SignIn() {
       password,
       redirect: false,
     });
-
+    debugger;
     if (result && !result.error) {
       router.push("/");
     }
