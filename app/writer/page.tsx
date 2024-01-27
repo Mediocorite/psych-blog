@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Markdown from "react-markdown";
+import MarkdownEditor from "./components/markdownEditor";
 export default function Writer() {
-  const [markdownText, setMarkdownText] = useState(``);
   // TODO: Hookup text area to be converted into markdown.
-  // Vconst { data: session } = useSession();
+  // const { data: session } = useSession();
   // const router = useRouter();
 
   // useEffect(() => {
@@ -17,18 +17,7 @@ export default function Writer() {
   // Have a simple markdown editor.
   // Two components -> Editor window / Output windows
 
-  return (
-    <div>
-      <textarea
-        className="w-full placeholder:opacity-80"
-        placeholder="Feed me some Markdown 🍕"
-        value={markdownText}
-        onChange={(e) => setMarkdownText(e.target.value)}
-        autoFocus
-      ></textarea>
-      <Markdown>{markdownText}</Markdown>
-    </div>
-  );
+  return <MarkdownEditor />;
 }
 
 Writer.requireAuth = true;

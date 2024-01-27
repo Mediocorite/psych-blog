@@ -40,5 +40,4 @@ const Options: NextAuthOptions = {
   ],
 };
 const handler = NextAuth(Options);
-console.log(JSON.stringify(handler));
 export { handler as GET, handler as POST };
