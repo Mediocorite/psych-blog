@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { Switch } from "@headlessui/react";
 import type { GetServerSidePropsContext } from "next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { req } = context;
@@ -58,7 +60,11 @@ export default function ThemeSwitcher({
         className={`${theme === "dark" ? "translate-x-1" : "translate-x-7"}
           absolute z-10 flex h-4 w-4 items-center justify-center text-sm`}
       >
-        {theme === "dark" ? "☀️" : "🌕"}
+        {theme === "dark" ? (
+          <FontAwesomeIcon icon={faMoon} style={{ color: "white" }} />
+        ) : (
+          <FontAwesomeIcon icon={faSun} className="text-yellow-400" />
+        )}
       </div>
     </Switch>
   );

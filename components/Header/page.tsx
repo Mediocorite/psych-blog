@@ -4,6 +4,8 @@ import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import AuthLinks from "./AuthLinks";
 import { Drawer, DrawerContent, DrawerTrigger } from "../shadcn/ui/drawer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 const links = [
   { id: 1, name: "About", url: "/about" },
@@ -25,30 +27,17 @@ export default function Header() {
           </Link>
         ))}
         <AuthLinks />
-        <div className=" hidden gap-3 lg:flex">
-          <Link
-            href={"https://www.linkedin.com/in/dinaish-mistry-16b496224/"}
-            style={{ width: "24px", height: "auto", position: "relative" }}
-          >
-            <Image
-              priority={true}
-              src="/linkedin.png"
-              alt="link"
-              width={24}
-              height={24}
-            />
-          </Link>
-          <Link
-            href={"https://www.instagram.com/_dinaish_mistry_/?hl=en"}
-            style={{ width: "24px", height: "auto", position: "relative" }}
-          >
-            <Image
-              src="/instagram.png"
-              alt="instagram"
-              width={24}
-              height={24}
-            />
-          </Link>
+        <div className="hidden gap-3 lg:flex">
+          <div style={{ width: "24px", height: "auto", position: "relative" }}>
+            <Link href="https://www.linkedin.com/in/dinaish-mistry-16b496224/">
+              <FontAwesomeIcon icon={faLinkedin} size="lg" />
+            </Link>
+          </div>
+          <div style={{ width: "24px", height: "auto", position: "relative" }}>
+            <Link href="https://www.instagram.com/_dinaish_mistry_/?hl=en">
+              <FontAwesomeIcon icon={faInstagram} size="lg" />
+            </Link>
+          </div>
         </div>
         <div className="flex md:hidden">
           hello
