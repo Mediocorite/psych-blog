@@ -30,8 +30,7 @@ export default function Writer() {
   return (
     <main className="markdown-page h-full">
       <div className="mb-4 flex w-full flex-col text-4xl lg:flex-row">
-        {/* TODO: Need to fix this and add more functionality to this */}
-        <div className="relative mr-2">
+        <div className="relative mr-2 flex w-full lg:w-9/12">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -52,13 +51,13 @@ export default function Writer() {
           </svg>
 
           {/* <FontAwesomeIcon icon={faCirclePlus} /> */}
+          <input
+            placeholder="Title..."
+            value={postTitle}
+            onChange={(e) => setPostTitle(e.target.value)}
+            className="focus:outline-none "
+          />
         </div>
-        <input
-          placeholder="Title..."
-          value={postTitle}
-          onChange={(e) => setPostTitle(e.target.value)}
-          className="w-full focus:outline-none lg:w-9/12"
-        />
         <div className="w-full bg-zinc-600 lg:w-3/12"></div>
       </div>
       <div className="mb-4 flex flex-col lg:flex-row">
