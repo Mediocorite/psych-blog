@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import { Listbox, Transition } from "@headlessui/react";
+import CategoryList from "../components/CategoryList";
+import { CategorySelect } from "./components/CategorySelect";
 
 const categories = [
   { id: 1, name: "Durward Reynolds", unavailable: false },
@@ -30,9 +32,9 @@ export default function Writer() {
   // Two components -> Editor window / Output windows
 
   // Metadata for the post
-  const [postTitle, setPostTitle] = useState(``);
-  const [bannerLink, setBannerLink] = useState(``);
-  const [categoryList, setCategoryList] = useState(categories[0]);
+  const [postTitle, setPostTitle] = useState<string>(``);
+  const [bannerLink, setBannerLink] = useState<string>(``);
+  const [category, setCategory] = useState<string>(``);
 
   // Main content
   const [markdown, setMarkdown] = useState(``);
@@ -49,7 +51,11 @@ export default function Writer() {
           />
         </div>
         <div className="w-full lg:w-3/12">
-          <Listbox value={categoryList} onChange={setCategoryList}>
+          <CategorySelect
+            value={category}
+            onChange={(value) => setCategory(value)}
+          />
+          {/* <Listbox value={categoryList} onChange={setCategoryList}>
             <div className="relative text-4xl">
               <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white px-6 py-3 text-left text-lg shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 md:text-xl">
                 <span className="block truncate">{categoryList.name}</span>
@@ -97,12 +103,11 @@ export default function Writer() {
                 </Listbox.Options>
               </Transition>
             </div>
-          </Listbox>
+          </Listbox> */}
         </div>
       </div>
-      <div className="mb-4 flex flex-col lg:flex-row">
-        <div className="h-3/4 min-h-12 w-full bg-red-600 lg:w-1/2"></div>
-        <div className="h-3/4 min-h-12 w-full bg-blue-500 lg:w-1/2"></div>
+      <div className="mb-4 ">
+        <div className="h-3/4 w-full"></div>
       </div>
       <div className="mb-4 flex justify-end">
         <div className="w-28 rounded-xl bg-green-300"></div>
