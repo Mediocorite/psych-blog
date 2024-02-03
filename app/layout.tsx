@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
 import Navbar from "@/components/Header/page";
 import Footer from "@/components/Footer";
 import SessionProvider from "@/providers/SessionProvider";
@@ -21,13 +22,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="min-h-screen dark:bg-black dark:text-white">
-          <div className="ml-auto mr-auto max-w-screen-2xl  pl-4 pr-4 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl ">
-            <SessionProvider>
+          <SessionProvider>
+            <Header />
+            {/* <div className="container mx-auto -mt-32 max-w-screen-2xl bg-white px-4 dark:bg-black sm:max-w-screen-sm  md:max-w-screen-md md:px-0 lg:max-w-screen-lg xl:max-w-screen-xl"> */}
+            <div className="container -mt-32 px-8">
               <Navbar />
               {children}
               <Footer />
-            </SessionProvider>
-          </div>
+            </div>
+          </SessionProvider>
         </div>
       </body>
     </html>
