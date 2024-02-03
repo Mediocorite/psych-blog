@@ -23,19 +23,19 @@ export default function Writer() {
   const [category, setCategory] = useState<string>(``);
   const [blogText, setBlogText] = useState(``);
 
-  const onSubmit = async () => {
-    try {
-      const docRef = await addDoc(collection(db, "blogs"), {
-        postTitle,
-        bannerLink,
-        category,
-        blogText,
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-  };
+  // const onSubmit = async () => {
+  //   try {
+  //     const docRef = await addDoc(collection(db, "blogs"), {
+  //       postTitle,
+  //       bannerLink,
+  //       category,
+  //       blogText,
+  //     });
+  //     console.log("Document written with ID: ", docRef.id);
+  //   } catch (e) {
+  //     console.error("Error adding document: ", e);
+  //   }
+  // };
 
   return (
     <main className="markdown-page h-full">
@@ -55,12 +55,12 @@ export default function Writer() {
           />
         </div>
       </div>
-      <ReactQuill
+      {/* <ReactQuill
         className="mb-4 h-full w-full"
         theme="snow"
         value={blogText}
         onChange={setBlogText}
-      />
+      /> */}
       <div className="mb-4 flex justify-end">
         <button className="focus:shadow-outline m-2 h-10 rounded-lg bg-green-700 px-5 text-green-100 transition-colors duration-150 hover:bg-green-800">
           Success
