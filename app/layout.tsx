@@ -23,9 +23,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="min-h-screen dark:bg-black dark:text-white">
           <SessionProvider>
-            <Header />
-            {/* <div className="container mx-auto -mt-32 max-w-screen-2xl bg-white px-4 dark:bg-black sm:max-w-screen-sm  md:max-w-screen-md md:px-0 lg:max-w-screen-lg xl:max-w-screen-xl"> */}
-            <div className="container -mt-32 px-8">
+            {/* <Header /> */}
+            <div className="container mx-auto max-w-screen-2xl bg-white px-4 dark:bg-black sm:max-w-screen-sm  md:max-w-screen-md md:px-0 lg:max-w-screen-lg xl:max-w-screen-xl">
+              {/* <div className="container -mt-32 px-8"> */}
               <Navbar />
               {children}
               <Footer />
