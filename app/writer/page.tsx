@@ -62,12 +62,14 @@ export default function Writer() {
           />
         </div>
       </div>
-      <ReactQuill
-        className="mb-4 h-full w-full"
-        theme="snow"
-        value={blogText}
-        onChange={setBlogText}
-      />
+      {typeof window !== undefined && (
+        <ReactQuill
+          className="mb-4 h-full w-full"
+          theme="snow"
+          value={blogText}
+          onChange={setBlogText}
+        />
+      )}
       <div className="mb-4 flex justify-end">
         <button className="focus:shadow-outline m-2 h-10 rounded-lg bg-green-700 px-5 text-green-100 transition-colors duration-150 hover:bg-green-800">
           Success
