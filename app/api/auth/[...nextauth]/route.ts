@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/middleware/firebase";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import app from "@/middleware/firebase";
 
 const Options: NextAuthOptions = {
   // Configure one or more authentication providers
@@ -18,6 +18,7 @@ const Options: NextAuthOptions = {
         // password: { label: "Password", type: "password" },
       },
       async authorize(credentials): Promise<any> {
+        const auth = getAuth(app);
         return await signInWithEmailAndPassword(
           auth,
           (credentials as any).email || "",

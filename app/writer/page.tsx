@@ -2,16 +2,16 @@
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "@/middleware/firebase";
+import { collection, addDoc, getFirestore } from "firebase/firestore";
+import app from "@/middleware/firebase";
 import { CategorySelect } from "./components/CategorySelect";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 export default function Writer() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
-
+  const db = getFirestore(app);
   useEffect(() => {
     if (!session) {
       router.push("/");
@@ -24,18 +24,25 @@ export default function Writer() {
   const [blogText, setBlogText] = useState(``);
 
   const onSubmit = async () => {
+    const docRef = await addDoc(collection(db, "blogs"), {
+      postTitle,
+      bannerLink,
+      category,
+      blogText,
+    });
     try {
-      const docRef = await addDoc(collection(db, "blogs"), {
-        postTitle,
-        bannerLink,
-        category,
-        blogText,
-      });
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
   };
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  if (status === "unauthenticated") {
+    router.push("/");
+  }
 
   return (
     <main className="markdown-page h-full">
