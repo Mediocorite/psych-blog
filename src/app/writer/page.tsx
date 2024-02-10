@@ -7,11 +7,11 @@ import app from "@/src/middleware/firebase";
 import { CategorySelect } from "./components/CategorySelect";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { postBlogArticle } from "./action";
 
 export default function Writer() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const db = getFirestore(app);
   useEffect(() => {
     if (!session) {
       router.push("/");
@@ -23,19 +23,6 @@ export default function Writer() {
   const [category, setCategory] = useState<string>(``);
   const [blogText, setBlogText] = useState(``);
 
-  const onSubmit = async () => {
-    const docRef = await addDoc(collection(db, "blogs"), {
-      postTitle,
-      bannerLink,
-      category,
-      blogText,
-    });
-    try {
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-  };
   if (status === "loading") {
     return <div>Loading...</div>;
   }
@@ -71,7 +58,18 @@ export default function Writer() {
         />
       )}
       <div className="mb-4 flex justify-end">
-        <button className="focus:shadow-outline m-2 h-10 rounded-lg bg-green-700 px-5 text-green-100 transition-colors duration-150 hover:bg-green-800">
+        <button
+          className="focus:shadow-outline m-2 h-10 rounded-lg bg-green-700 px-5 text-green-100 transition-colors duration-150 hover:bg-green-800"
+          onClick={() =>
+            postBlogArticle({
+              bannerLink: bannerLink,
+              blogText: blogText,
+              postDate: new Date(),
+              category: category,
+              postTitle: postTitle,
+            })
+          }
+        >
           Success
         </button>
       </div>
