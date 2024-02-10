@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import app from "@/middleware/firebase";
+import app from "@/src/middleware/firebase";
 
 const Options: NextAuthOptions = {
   // Configure one or more authentication providers

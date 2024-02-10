@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { collection, addDoc, getFirestore } from "firebase/firestore";
-import app from "@/middleware/firebase";
+import app from "@/src/middleware/firebase";
 import { CategorySelect } from "./components/CategorySelect";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";

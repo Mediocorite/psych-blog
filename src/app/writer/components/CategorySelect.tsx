@@ -3,20 +3,20 @@
 import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
 
-import { cn } from "@/components/shadcn/library/utils";
-import { Button } from "@/components/shadcn/ui/button";
+import { cn } from "@/src/components/shadcn/library/utils";
+import { Button } from "@/src/components/shadcn/ui/button";
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/components/shadcn/ui/command";
+} from "@/src/components/shadcn/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/shadcn/ui/popover";
+} from "@/src/components/shadcn/ui/popover";
 
 interface CategorySelectProps {
   value: string;

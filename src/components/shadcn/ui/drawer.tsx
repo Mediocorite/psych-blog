@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
 
-import { cn } from "@/components/shadcn/library/utils";
+import { cn } from "@/src/components/shadcn/library/utils";
 
 const Drawer = ({
   shouldScaleBackground = true,
