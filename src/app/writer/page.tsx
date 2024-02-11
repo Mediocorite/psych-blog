@@ -23,13 +23,13 @@ export default function Writer() {
   const [category, setCategory] = useState<string>(``);
   const [blogText, setBlogText] = useState(``);
 
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
+  // if (status === "loading") {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (status === "unauthenticated") {
-    router.push("/");
-  }
+  // if (status === "unauthenticated") {
+  //   router.push("/");
+  // }
 
   return (
     <main className="markdown-page h-full">
@@ -50,12 +50,20 @@ export default function Writer() {
         </div>
       </div>
       {typeof window !== undefined && (
-        <ReactQuill
-          className="mb-4 h-full w-full"
-          theme="snow"
-          value={blogText}
-          onChange={setBlogText}
-        />
+        <>
+          <input
+            placeholder="Paste unsplash link..."
+            value={bannerLink}
+            onChange={(e) => setBannerLink(e.target.value)}
+            className="w-full p-4"
+          />
+          <ReactQuill
+            className="mb-4 h-full w-full"
+            theme="snow"
+            value={blogText}
+            onChange={setBlogText}
+          />
+        </>
       )}
       <div className="mb-4 flex justify-end">
         <button

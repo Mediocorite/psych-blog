@@ -25,8 +25,8 @@ interface CategorySelectProps {
 
 const frameworks = [
   {
-    value: "Resources",
-    label: "resources",
+    value: "resources",
+    label: "Resources",
   },
   {
     value: "sveltekit",
