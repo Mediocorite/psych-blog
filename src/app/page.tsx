@@ -1,8 +1,3 @@
-import CardList from "@/app/components/CardList";
-import CategoryList from "@/app/components/CategoryList";
-import Featured from "@/app/components/Featured";
-import Menu from "@/app/components/Menu";
-
 export default function Home() {
   return (
     <div className="w-full rounded-t text-xl leading-normal text-gray-800 md:text-2xl">
