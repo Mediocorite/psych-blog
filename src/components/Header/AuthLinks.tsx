@@ -10,8 +10,17 @@ export default function AuthLinks() {
   if (status === "authenticated") {
     return (
       <>
-        <Link href={"/writer"}>Writer</Link>
-        <Link href="/" onClick={() => signOut()}>
+        <Link
+          href={"/writer"}
+          className="m-4 p-4 text-center text-2xl lg:m-0 lg:p-0 lg:text-xl"
+        >
+          Writer
+        </Link>
+        <Link
+          href="/"
+          className="m-4 p-4 text-center text-2xl lg:m-0 lg:p-0 lg:text-xl"
+          onClick={() => signOut()}
+        >
           Logout
         </Link>
       </>

@@ -1,33 +1,34 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { CategorySelect } from "./components/CategorySelect";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-import { postBlogArticle } from "./action";
+import RichTextEditor from "./components/richTextEditor";
+import { useSession } from "next-auth/react";
+import { postBlogArticle } from "@/src/database/firestore";
+
+import { redirect } from "next/navigation";
 
 export default function Writer() {
   const { data: session, status } = useSession();
-  const router = useRouter();
-  useEffect(() => {
-    if (!session) {
-      router.push("/");
-    }
-  }, [session]);
 
+  if (status === "unauthenticated") redirect("/");
+  if (status === "loading") return <div className="">Loading...</div>;
+
+  // Form Logic -> Storing information in a state
   const [postTitle, setPostTitle] = useState<string>(``);
   const [bannerLink, setBannerLink] = useState<string>(``);
   const [category, setCategory] = useState<string>(``);
   const [blogText, setBlogText] = useState(``);
+  const editBlogText = (newText: string) => setBlogText(newText);
 
-  // if (status === "loading") {
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (status === "unauthenticated") {
-  //   router.push("/");
-  // }
+  const postArticle = () => {
+    postBlogArticle({
+      bannerLink: bannerLink,
+      blogText: blogText,
+      postDate: new Date(),
+      category: category,
+      postTitle: postTitle,
+    });
+  };
 
   return (
     <main className="markdown-page h-full">
@@ -47,7 +48,7 @@ export default function Writer() {
           />
         </div>
       </div>
-      {typeof window !== undefined && (
+      {status === "authenticated" && (
         <>
           <input
             placeholder="Paste unsplash link..."
@@ -55,28 +56,15 @@ export default function Writer() {
             onChange={(e) => setBannerLink(e.target.value)}
             className="w-full p-4"
           />
-          <ReactQuill
-            className="mb-4 h-full w-full"
-            theme="snow"
-            value={blogText}
-            onChange={setBlogText}
-          />
+          <RichTextEditor blogText={blogText} update={editBlogText} />
         </>
       )}
       <div className="mb-4 flex justify-end">
         <button
           className="focus:shadow-outline m-2 h-10 rounded-lg bg-green-700 px-5 text-green-100 transition-colors duration-150 hover:bg-green-800"
-          onClick={() =>
-            postBlogArticle({
-              bannerLink: bannerLink,
-              blogText: blogText,
-              postDate: new Date(),
-              category: category,
-              postTitle: postTitle,
-            })
-          }
+          onClick={postArticle}
         >
-          Success
+          Submit
         </button>
       </div>
     </main>

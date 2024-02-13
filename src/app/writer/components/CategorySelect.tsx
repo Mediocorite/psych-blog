@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
-
 import { cn } from "@/src/components/shadcn/library/utils";
 import { Button } from "@/src/components/shadcn/ui/button";
 import {
@@ -23,28 +22,7 @@ interface CategorySelectProps {
   onChange: (newValue: string) => void;
 }
 
-const frameworks = [
-  {
-    value: "resources",
-    label: "Resources",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-];
+import categories from "@/public/category.json";
 
 export const CategorySelect: React.FC<CategorySelectProps> = (props) => {
   const { value, onChange } = props;
@@ -62,20 +40,22 @@ export const CategorySelect: React.FC<CategorySelectProps> = (props) => {
           className="w-[200px] justify-between"
         >
           {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
+            ? Object.values(categories).find(
+                (categories) => categories.value === value,
+              )?.label
+            : "Select categories..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandInput placeholder="Search categories..." />
+          <CommandEmpty>No categories found.</CommandEmpty>
           <CommandGroup>
-            {frameworks.map((framework) => (
+            {Object.values(categories).map((categories) => (
               <CommandItem
-                key={framework.value}
-                value={framework.value}
+                key={categories.value}
+                value={categories.value}
                 onSelect={(currentValue) => {
                   onChange(currentValue);
                   onToggle();
@@ -84,10 +64,10 @@ export const CategorySelect: React.FC<CategorySelectProps> = (props) => {
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
-                    value === framework.value ? "opacity-100" : "opacity-0",
+                    value === categories.value ? "opacity-100" : "opacity-0",
                   )}
                 />
-                {framework.label}
+                {categories.label}
               </CommandItem>
             ))}
           </CommandGroup>
