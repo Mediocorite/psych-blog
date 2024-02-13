@@ -1,4 +1,10 @@
-export default function Home() {
+import { getAllPosts } from "../database/firestore";
+
+export default async function Home() {
+  const result = await getAllPosts();
+  result?.forEach((document) => {
+    console.log(document.data());
+  });
   return (
     <div className="w-full rounded-t text-xl leading-normal text-gray-800 md:text-2xl">
       {/*Lead Card*/}
