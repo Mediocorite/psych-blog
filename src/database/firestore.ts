@@ -16,7 +16,7 @@ const db = getFirestore(app);
 export async function getSinglePost(slug: string) {
   try {
     const docRef = doc(db, "blogs", slug);
-    return await getDoc(docRef);
+    return (await getDoc(docRef)).data() as BlogPost;
   } catch (error) {
     console.error("Error retrieving the document" + error);
   }

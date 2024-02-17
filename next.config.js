@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    // TODO: Fix the deprecated configurations
     domains: ["source.unsplash.com", "images.unsplash.com"],
   },
   // async rewrites() {

@@ -1,6 +1,9 @@
 export interface BlogPost {
   postTitle: string;
-  postDate: Date;
+  postDate: {
+    seconds: number;
+    nanoseconds: number;
+  };
   blogText: string;
   bannerLink: string;
   category: string;

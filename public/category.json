@@ -1,20 +1,20 @@
 {
-  "cat1": {
+  "resources": {
     "id": 1,
     "value": "resources",
     "label": "Resources"
   },
-  "cat2": {
+  "reflections": {
     "id": 2,
     "value": "reflections",
     "label": "Reflections"
   },
-  "cat3": {
+  "literature": {
     "id": 3,
     "value": "literature",
     "label": "Literature"
   },
-  "cat4": {
+  "personal": {
     "id": 4,
     "value": "personal",
     "label": "Personal"
