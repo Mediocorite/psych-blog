@@ -1,7 +1,7 @@
 import React from "react";
 import { getSinglePost } from "@/src/database/firestore";
 import { BlogPost } from "@/src/models/blogPost";
-import { formatDate } from "@/src/utils/dateFormatPipe";
+import { formatDate } from "@/src/utilities/dateFormatPipe";
 import categories from "@/public/category.json";
 
 export default async function Page({ params }: { params: { slug: string } }) {
