@@ -10,10 +10,6 @@ import { redirect } from "next/navigation";
 export default function Writer() {
   const { data: session, status } = useSession();
 
-  if (status === "unauthenticated") redirect("/");
-  if (status === "loading") return <div className="">Loading...</div>;
-
-  // Form Logic -> Storing information in a state
   const [postTitle, setPostTitle] = useState<string>(``);
   const [bannerLink, setBannerLink] = useState<string>(``);
   const [category, setCategory] = useState<string>(``);
@@ -24,11 +20,19 @@ export default function Writer() {
     postBlogArticle({
       bannerLink: bannerLink,
       blogText: blogText,
-      postDate: new Date(),
+      postDate: {
+        seconds: Math.floor(new Date().getTime() / 1000),
+        nanoseconds: (new Date().getTime() % 1000) * 1000000,
+      },
       category: category,
       postTitle: postTitle,
     });
   };
+
+  if (status === "unauthenticated") redirect("/");
+  if (status === "loading") return <div className="">Loading...</div>;
+
+  // Form Logic -> Storing information in a state
 
   return (
     <main className="markdown-page h-full">
