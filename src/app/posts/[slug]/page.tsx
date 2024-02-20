@@ -1,7 +1,7 @@
 import React from "react";
 import { getSinglePost } from "@/src/database/firestore";
 import { BlogPost } from "@/src/models/blogPost";
-import { formatDate } from "@/src/utilities/dateFormatPipe";
+import { DateFormatPipe } from "@/src/utilities/dateFormatPipe";
 import categories from "@/public/category.json";
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -12,7 +12,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     <>
       <div className="pt-16 text-center md:pt-32">
         <p className="text-sm font-bold text-green-500 md:text-base">
-          {formatDate(data?.postDate)}
+          {DateFormatPipe(data?.postDate)}
           <span className="text-gray-900"> / </span>
           {/* TODO: Dirty fix, better typescript definition would help */}
           {categories[data?.category as keyof typeof categories]?.label}

@@ -4,7 +4,6 @@ import { CategorySelect } from "./components/CategorySelect";
 import RichTextEditor from "./components/richTextEditor";
 import { useSession } from "next-auth/react";
 import { postBlogArticle } from "@/src/database/firestore";
-
 import { redirect } from "next/navigation";
 
 export default function Writer() {
@@ -17,7 +16,7 @@ export default function Writer() {
   const editBlogText = (newText: string) => setBlogText(newText);
 
   const postArticle = () => {
-    postBlogArticle({
+    const postID = postBlogArticle({
       bannerLink: bannerLink,
       blogText: blogText,
       postDate: {
@@ -27,6 +26,7 @@ export default function Writer() {
       category: category,
       postTitle: postTitle,
     });
+    redirect(`/posts/${postID}`);
   };
 
   if (status === "unauthenticated") redirect("/");

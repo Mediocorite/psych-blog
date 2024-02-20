@@ -10,9 +10,9 @@ function Footer() {
           <h1 className="text-2xl">Jung and the Restless</h1>
         </div>
         <p className="font-light">
-          &copy; 2024 Dinaish Mistry. All rights reserved. Made in collaboration
-          with Anzar Ahmad Malik. Want to build something? Let me know{" "}
-          {`{Insert portfolio link here}`}
+          &copy; 2024 Dinaish Kaizad Mistry. All rights reserved. Made in
+          collaboration with Anzar Ahmad Malik. Want to build something? Let me
+          know {`{Insert portfolio link here}`}
         </p>
       </div>
       <div className="flex lg:justify-end">

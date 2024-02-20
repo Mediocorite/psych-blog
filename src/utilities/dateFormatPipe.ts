@@ -1,4 +1,4 @@
-export function formatDate(date: {
+export function DateFormatPipe(date: {
   seconds: number;
   nanoseconds: number;
 }): string {
