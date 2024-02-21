@@ -17,15 +17,31 @@ export default function LeadCard({
       href={`/posts/${articleID}`}
       className="flex h-full w-full flex-wrap overflow-hidden rounded bg-white p-6 no-underline hover:no-underline"
     >
-      <div className="w-full rounded-t md:w-2/3">
+      <div
+        className="relative block w-full rounded-t md:w-2/3"
+        style={{
+          position: "relative",
+          paddingTop: "56.25%" /* 16:9 Aspect Ratio */,
+        }}
+      >
         <Image
           src={blogPostData.bannerLink}
           alt="banner"
-          width={500}
-          height={500}
-          className="h-full w-full shadow"
+          fill
+          className="absolute left-0 top-0 h-full w-full object-cover "
         />
       </div>
+      {/* <div className="relative block h-full w-full rounded-t md:w-2/3">
+        <Image
+          src={blogPostData.bannerLink}
+          alt="banner"
+          // width={500}
+          fill
+          // height={500}
+          className="h-auto w-full object-cover"
+          // className="h-full w-full transform object-cover transition-transform duration-500 ease-in-out hover:scale-150"
+        />
+      </div> */}
       <div className="flex w-full flex-shrink flex-grow flex-col md:w-1/3">
         <div className="flex-1 overflow-hidden rounded-b-none rounded-t bg-white shadow-lg">
           <p className="w-full px-6 pt-6 text-xs text-gray-600 md:text-sm">
