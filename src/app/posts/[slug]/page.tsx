@@ -6,7 +6,9 @@ import categories from "@/public/category.json";
 
 export default async function Page({ params }: { params: { slug: string } }) {
   // TODO: Figure out why the classic type of blog post doesn't work here
-  const data: BlogPost | undefined = await getSinglePost(params.slug);
+  const data: BlogPost | undefined = await getSinglePost(
+    decodeURIComponent(params.slug),
+  );
   if (!data) return <div className="">Sad</div>;
   return (
     <>
